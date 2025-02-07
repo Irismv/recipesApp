@@ -1,0 +1,23 @@
+:root {
+  /* Kleurinstellingen */
+  --ion-color-primary: #31593c;   /* Primair groen */
+  --ion-color-secondary: #31473A; /* Secundair groen */
+
+  /* Achtergrond- en tekstkleuren */
+  --ion-background-color: #f4f4f4; /* Lichte achtergrondkleur */
+  --ion-text-color: #333;           /* Donkere tekstkleur voor contrast */
+
+  /* Groene tinten voor knoppen, maar met een lichtere hover-kleur */
+  --ion-button-background: #31593c; /* Groene knoppen */
+  --ion-button-color: white;        /* Witte tekst op knoppen */
+  --ion-button-hover-background: #2a4c36; /* Donkerder groen bij hover */
+
+  /* Input velden */
+  --ion-input-background: #fff;
+  --ion-input-placeholder-color: #aaa;
+  --ion-input-color: #333;
+
+  /* Card en lijstachtergrond */
+  --ion-card-background: #ffffff;   /* Witte achtergrond voor kaarten */
+  --ion-list-background: #f9f9f9;   /* Lichte, grijsachtige achtergrond voor lijsten */
+}

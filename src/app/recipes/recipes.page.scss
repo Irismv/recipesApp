@@ -1,0 +1,22 @@
+/* Achtergrondkleur voor de app */
+ion-content {
+  --background: #f4f4f4;  /* Lichte achtergrondkleur */
+}
+
+/* Specifieke tekstkleur aanpassen */
+ion-label, ion-text {
+  --color: #31473a;  /* Donkere tekstkleur */
+}
+
+/* De knoppen zelf */
+ion-button {
+  --background: #31593c !important;  /* Groene knopkleur */
+  --color: #f4f4f4 !important;      /* Lichte tekstkleur */
+  --border-radius: 12px;
+  --font-weight: bold;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Schaduw voor tekst */
+}
+
+ion-button:hover {
+  --background: #2a4c36 !important;  /* Lichter groen bij hover */
+}

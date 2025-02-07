@@ -1,0 +1,39 @@
+/* Groene achtergrond voor knoppen */
+ion-button {
+  --background: #31593c !important;  /* Groene kleur voor knoppen */
+  --color: #f4f4f4 !important;      /* Lichtere tekstkleur */
+  --border-radius: 12px;             /* Ronde hoeken */
+  --padding: 12px 20px;
+  --font-weight: bold;
+  transition: background 0.3s ease;
+
+  /* Verwijder focus blauw */
+  ::part(native) {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Hover: Lichtgroen bij hover */
+  &:hover {
+    --background: #2a4c36 !important; /* Lichter groen als hover */
+  }
+
+  /* Actief of focus: Weghalen blauwe rand */
+  &:active, &:focus {
+    --background: #2a4c36 !important; /* Groene kleur bij klik/focus */
+    --color: #f4f4f4 !important;      /* Lichtere tekstkleur */
+    box-shadow: none !important;      /* Geen schaduw bij focus/klik */
+  }
+}
+
+/* Globale achtergrondkleur en tekstkleur */
+:root {
+  --ion-background-color: #f4f4f4; /* Achtergrondkleur van pagina's */
+  --ion-text-color: #31473a;        /* Donkere tekstkleur */
+}
+
+/* Pas het ion-header en de ion-toolbar aan om het groene thema te gebruiken */
+ion-header, ion-toolbar {
+  --background: #31593c !important; /* Groene achtergrond voor header */
+  --color: #f4f4f4;                 /* Lichtere tekstkleur voor header */
+}

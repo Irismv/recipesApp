@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Receptenplanner</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Formulier om een nieuw recept toe te voegen -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Voeg een recept toe</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Naam</ion-label>
+        <ion-input [(ngModel)]="newRecipe.name" placeholder="Receptnaam"></ion-input>
+      </ion-item>
+
+      <!-- Ingrediënt invoeren -->
+      <ion-item>
+        <ion-label>Ingrediënt</ion-label>
+        <ion-input [(ngModel)]="ingredientInput" placeholder="Bijv. melk"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Hoeveelheid</ion-label>
+        <ion-input type="number" [(ngModel)]="ingredientQuantity" placeholder="Bijv. 1"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Eenheid</ion-label>
+        <ion-input [(ngModel)]="ingredientUnit" placeholder="Bijv. liter"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" (click)="addIngredient()">Ingrediënt toevoegen</ion-button>
+
+      <ion-item>
+        <ion-label>Kooktijd (in minuten)</ion-label>
+        <ion-input type="number" [(ngModel)]="newRecipe.cookingTime" placeholder="Bijv. 30"></ion-input>
+      </ion-item>
+
+      <!-- Toon de toegevoegde ingrediënten -->
+      <ion-list>
+        <ion-item *ngFor="let ing of newRecipe.ingredients">
+          <ion-label>{{ ing.name }} ({{ ing.quantity }} {{ ing.unit }})</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-button expand="block" (click)="addRecipe()">Toevoegen</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Sorteerknop boven de receptenlijst -->
+  <ion-item>
+    <ion-label>Sorteer op</ion-label>
+    <ion-select [(ngModel)]="sortBy" (ionChange)="changeSortOrder(sortBy)">
+      <ion-select-option value="cookingTime">Kooktijd</ion-select-option>
+      <ion-select-option value="ingredients">Aantal Ingrediënten</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Lijst van alle recepten -->
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Alle recepten</ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let recipe of recipes; let i = index">
+      <ion-label>
+        <h2>{{ recipe.name }}</h2>
+        <p *ngFor="let ing of recipe.ingredients">
+          {{ ing.name }} ({{ ing.quantity }} {{ ing.unit }})
+        </p>
+        <p>Kooktijd: {{ recipe.cookingTime }} min</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="editRecipe(i)">Bewerken</ion-button>
+        <ion-button (click)="removeRecipe(i)">Verwijderen</ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <!-- Weekplanning sectie -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Weekplanning</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" (click)="generateWeekPlan()">Genereer weekplanning</ion-button>
+      <ion-list>
+        <ion-item *ngFor="let recipe of weekPlan">
+          <ion-label>
+            <h2>{{ recipe.name }}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
+<!-- Boodschappenlijst sectie -->
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Boodschappenlijst</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-button expand="block" (click)="generateShoppingList()">Genereer boodschappenlijst</ion-button>
+    <ion-list>
+      <ion-item *ngFor="let item of shoppingList">
+        <ion-label>{{ item.name }} ({{ item.quantity }} {{ item.unit }})</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+</ion-content>
